@@ -1,0 +1,51 @@
+<html>
+<head>
+    <title>转换日期格式</title>
+</head>
+<body>
+
+<script>
+
+
+    //对不足位数进行填充
+     function intercept(str,section,separator){
+         var section=section|| 3,
+                 separator=separator||"0",
+                 l=(str+"").length,
+                 ary=new Array(section-0+1).join(separator);
+         if(l>=section){
+             return (str+"").substr(l-section)
+         }else{
+             return ary.substr(0,section-l)+str;
+         }
+     }
+
+     Date.prototype.format=function(str){
+       var week=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+       var time={
+           'y+':this.getFullYear(),
+           'M+':this.getMonth()+1,
+           'd+':this.getDate(),
+           'H+':this.getHours(),
+           'm+':this.getMinutes(),
+           's+':this.getSeconds(),
+           'w+':this.getDay(),
+           'W+':week[this.getDay()]
+       };
+       var str=str||'yyyy-MM-dd HH:mm:ss';
+       for(var i in time){
+           var reg=new RegExp('('+i+')','g');
+           str=str.replace(
+                   reg,
+                   function(){
+                       return intercept(time[i],(i=="w"||i=="W")? time[i].length:arguments[1].length)
+                   })
+       }
+       return str;
+   }
+
+    document.write("当前时间："+ new Date().format());
+
+</script>
+</body>
+</html>

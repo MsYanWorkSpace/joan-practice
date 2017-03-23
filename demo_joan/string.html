@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>查找字符串中出现最多的字符和个数(两种方法一个普通方法 一个是正则表达式方式)</title>
+</head>
+<body>
+<script>
+
+
+/*    String.prototype.charAt=function(){
+           var val="" //出现最多次数的值
+           var num=0;//出现的次数
+           var json={};
+        for(var i=0; i<this.length;i++){
+            if(!json[this[i]]){
+                json[this[i]]=[];
+            }
+            json[this[i]].push(this[i]);
+        }
+
+        for(var j in json){
+            if(json[j].length>num){
+                num=json[j].length;
+                val=json[j][0];
+            }
+
+        }
+        return "出现次数最多的值是："+val+",出现了"+num+"次";
+    }
+
+    var str='afafudfahfuewe7tybfewkhhhhhhhh';
+    alert(str.charAt());*/
+
+
+
+    String.prototype.charAt=function(){
+        var num=0;//出现的次数
+        var val=""; //出现最多次数的值
+        var re=/(\w)\1+/g;
+        var arr=this.split("");
+        arr.sort();
+        var str=arr.join("");
+        str.replace(re,function(arg1,arg2){
+            if(arg1.length>num){
+                num=arg1.length;
+                val=arg2;
+            }
+        })
+        return "出现次数最多的值是："+val+",出现了"+num+"次";
+    }
+
+    var str='afafudfahfuewe7tybfewkhhhhhhhh';
+    alert(str.charAt());
+
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>折线图</title>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+<body>
+<div>
+
+<h1>大一网</h1>
+
+直线:<br>
+使用line标签插入直线，它有4个基本属性：x1:起点横坐标、y1:起点纵坐标、x2:终点横坐标、y2:终点纵坐标，
+用以下代码可以画一条直线：<br>
+<svg> <line x1="0" y1="0" x2="50" y2="100" stroke="#F00"/> </svg>
+
+矩形:<br>
+使用rect标签插入矩形，它有4个基本属性：x:起点横坐标、y:起点纵坐标、width:宽度、height:长度，用以下代码可以画一个100×100的矩形：<br>
+<svg> <rect x="0" y="0" width="100" height="100" fill='yellow'/> </svg>
+<br>
+SVG形状标签支持CSS样式，使用style来为它定义样式，例如：用以下代码可以画一个100×100的带有黄色边框的红色透明圆角矩形,为显示透明度，在底层加了一个黑色背景框。<br>
+<svg> 
+    <rect x="0" y="0" width="100" height="100" style="fill:#000;"/>
+    <rect x="50" y="50" width="100" height="100" rx="10" ry="10" style="fill:#F00;stroke-width:1;stroke:#FF0;opacity:0.9;"/> 
+</svg>
+<br>
+CSS样式说明<br>
+rx 和 ry 属性可使矩形产生圆角。<br>
+CSS 的 fill 属性定义矩形的填充颜色（rgb 值、颜色名或者十六进制值）<br>
+CSS 的 stroke-width 属性定义矩形边框的宽度<br>
+CSS 的 stroke 属性定义矩形边框的颜色<br>
+CSS 的 fill-opacity 属性定义填充颜色透明度（合法的范围是：0 - 1）<br>
+CSS 的 stroke-opacity 属性定义笔触颜色的透明度（合法的范围是：0 - 1）<br>
+
+圆形:<br>
+使用circle标签插入圆形，它有3个基本属性：cx:圆点横坐标、cy:圆点纵坐标、r:半径，用以下代码可以画一个半径50的圆形：<br>
+<svg> <circle cx="100" cy="100" r="50"/> </svg>
+<br>
+
+椭圆<br>
+使用ellipse标签插入椭圆，它有4个基本属性：cx:圆点横坐标、cy:圆点纵坐标、rx:横轴半径、ry：纵轴半径，用以下代码可以画一些椭圆：<br>
+<svg>
+ <ellipse cx="100" cy="100" rx="100" ry="100" style="fill:#F00;stroke-width:1;stroke:#FF0;opacity:0.9;"/> 
+ <ellipse cx="100" cy="100" rx="100" ry="50"/> 
+ </svg>
+ <br>
+
+多边形 <br>
+使用polygon标签插入多边形，它使用一个数组来定义各个顶点，用以下代码可以画多边形： <br>
+<svg> 
+ <polygon points="0,0 100,0 100,100 0,100" style="fill:#F00;stroke-width:1;stroke:#FF0;opacity:0.5;"/>
+ <polygon points="50,0 100,50 0,50" style="fill:#FF0;stroke-width:1;stroke:#FF0;opacity:0.5;"/> 
+ </svg>
+ <br>
+
+
+ 折线<br>
+使用polyline标签插入折线，它使用一个数组来定义各个顶点，用以下代码可以画折线：<br>
+<svg> 
+<polyline points="0,5 100,20 200,65 300,48 400,37" style="fill:#FFF;stroke:#F00;stroke-width:2"/> </svg>
+<br>
+
+路径<br>
+使用path标签描绘路径，它使用如下的句法描述路径：<br>
+M = moveto 将画笔移动到<br>
+L = lineto 从画笔处到此点画线<br>
+H = horizontal lineto 从画笔处到此点画线<br>
+V = vertical lineto 从画笔处到此点画线<br>
+C = curveto 从画笔处到此点画曲线<br>
+S = smooth curveto 从画笔处到此点画平滑线<br>
+Q = quadratic Belzier curve 从画笔处到此点画贝塞尔线<br>
+T = smooth quadratic Belzier curveto 从画笔处到此点画贝塞尔线<br>
+A = elliptical Arc<br>
+Z = closepath 结束描绘<br>
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+<path id="lineAB" d="M 100 350 l 150 -300" stroke="red"
+stroke-width="3" fill="none" />
+<path id="lineBC" d="M 250 50 l 150 300" stroke="red"
+stroke-width="3" fill="none" />
+<path d="M 175 200 l 150 0" stroke="green" stroke-width="3"
+fill="none" />
+<path d="M 100 350 q 150 -300 300 0" stroke="blue"
+stroke-width="5" fill="none" />
+<!-- Mark relevant points -->
+<g stroke="black" stroke-width="3" fill="black">
+<circle id="pointA" cx="100" cy="350" r="3" />
+<circle id="pointB" cx="250" cy="50" r="3" />
+<circle id="pointC" cx="400" cy="350" r="3" />
+</g>
+<!-- Label the points -->
+<g font-size="30" font="sans-serif" fill="black" stroke="none"
+text-anchor="middle">
+<text x="100" y="350" dx="-30">A</text>
+<text x="250" y="50" dy="-10">B</text>
+<text x="400" y="350" dx="30">C</text>
+</g>
+</svg>
+<br>
+
+
+
+
+
+
+
+</div>
+<script type="text/javascript">
+	var w=400,h=400;
+
+</script>
+</body>
+</html>

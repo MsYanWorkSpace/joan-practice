@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>轮播图</title>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="banner-slide.js"></script>
+    <style>
+        ul,ul li{ list-style: none; }
+        img{max-width:100%;height:auto;display:block}
+        .banner{ overflow: hidden; width: 400px; margin: 100px; position: relative }
+        .banner ul{ margin: 0; padding: 0; position: relative; left: 0px; overflow: hidden; height: 235px; width: 1200px;}
+        .banner ul li{float: left; width: 400px; }
+        .prev,.next{ cursor: pointer; position: absolute; top: 50%; margin-top: -20px; width: 40px; height: 40px;background: #FFFFFF; opacity: 0.75;  color: #323232; text-align: center }
+        .prev{ left: 0;  }
+        .next{ right: 0; }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <ul>
+            <li><img src="images.img/banner-1.jpg"/></li>
+            <li><img src="images.img/banner-2.jpg"/></li>
+            <li><img src="images.img/banner-3.jpg"/></li>
+        </ul>
+        <div class="prev">prev</div>
+        <div class="next">next</div>
+    </div>
+</body>
+</html>

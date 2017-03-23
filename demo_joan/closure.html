@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title></title>
+    <style>
+        a{cursor: pointer}
+    </style>
+    <script src="jquery-2.1.1.min.js"></script>
+</head>
+<body>
+<div>
+    <a>这是第一个链接</a><br>
+    <a>这是第二个链接</a><br>
+    <a>这是第三个链接</a><br>
+    <a>这是第四个链接</a><br>
+</div>
+<script>
+
+    //解决方法一
+/*    var a=document.getElementsByTagName('a');
+    for(var i=0;i< a.length;i++){
+        a[i].onclick=function(arg){
+            return function(){
+                alert('这是第'+arg+'个');
+            }
+        }(i)
+    }*/
+
+    //解决方法二
+    /* 解决思路:
+       将下标作为对象属性(name:"i",value:i的值)添加到每个数组项(p对象)中*/
+/*    var a=document.getElementsByTagName('a');
+    for(var i=0;i< a.length;i++){
+            a[i].i=i;
+        a[i].onclick=function(){
+            alert(this.i);
+        }
+    }*/
+
+    //解决办法三
+/*    var a=document.getElementsByTagName('a');
+    for(var i=0;i< a.length;i++){
+        a[i].onclick=function(){
+            var temp=i;
+            return function(){
+                alert(temp);
+            }
+        }();
+    }*/
+
+    //解决办法四
+    /*
+     解决思路:
+     将下标添加为绑定函数的属性
+     */
+/*    var arr=document.getElementsByTagName('a');
+    for(var i = 0;i<arr.length;i++){
+        (arr[i].onclick = function () {
+            alert(arguments.callee.i);      //arguments 参数对象  arguments.callee 参数对象所属函数
+        }).i = i;
+    }*/
+
+    //解决办法五
+    /*
+     解决思路:
+     通过 new 使用 Function 的构造函数 创建 Function 实例实现,由于传入的函数体的内容是字符串,故 Function 得到的是一个字符串拷贝,而没有得到 i 的引用(这里是先获取 i.toString()然后与前后字符串拼接成一个新的字符串,Function 对其进行反向解析成 JS 代码)
+     */
+/*    var arr=document.getElementsByTagName('a');
+    for(var i = 0;i<arr.length;i++){
+        arr[i].onclick=new Function("alert("+i+")");
+    }*/
+
+    //解决办法6
+    /*
+     解决思路:
+     直接通过 Function 返回一个函数
+     与解决办法5的不同之处在于:
+     解决办法5使用 new,使用了 new,此时 Function 函数就被当成构造器可以用来构造一个 Function 实例返回
+     当前解决办法没有使用 new ,即将 Function 函数当成一个函数,传入参数返回一个新函数;
+     其实此处 new 与不 new 只是的区别在于:
+     使用了 new 即 Function 函数充当构造器,由 JS 解析器生产一个新的对象,构造器内的 this 指向该新对象;
+     不实用 new 即 Function 函数依旧是函数,由函数内部自己生产一个实例返回.
+     */
+    var arr=document.getElementsByTagName('a');
+    for(var i = 0;i<arr.length;i++){
+        arr[i].onclick = Function("alert("+i+");");
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+	<head></head>
+	 <style type="text/css">
+    body{margin:0 auto;background: #000;border: solid 1px red;}
+    ul{margin:0px;border: solid yellow 1px;padding:0px;position: relative;}
+    li{display: none;border: solid red 1px;width: 750px;height: 500px;margin:0 auto;position:absolute;}
+    img{display:inline-block;width:750px;height: 500px;}
+    </style>
+	<body>
+	<ul>
+		    <li style="display:block"><img src="images/banner-1.jpg"/></li>
+		    <li><img src="images/banner-2.jpg"/></li>
+		    <li><img src="images/banner-3.jpg"/></li>
+   </ul>
+    <script src="jquery-2.1.1.min.js"></script>
+       <script type="text/javascript">
+    $(function(){
+        var order = 0;  //order变量用于图片的计数
+        var change = setInterval(function(){
+            order++;
+            if(order == $("li").length){
+                order = 0;
+            }
+            show(order);
+        },3500);
+        function show(order){
+            $("li").eq(order - 1).fadeOut(1200); //将上一张图片隐藏
+            $("li").eq(order).fadeIn(1200); //将这张图片出现
+        };
+    })
+    </script>
+	</body>
+</html>

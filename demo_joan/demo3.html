@@ -1,0 +1,26 @@
+<html>
+	<head></head>
+	<body>
+		  <div id="n">184356</div> 元
+		  <script src="jquery-2.1.1.min.js"></script>
+		  <script>
+				$(function(){
+					var $n=$('#n').html();
+					add($n)
+				})
+				function add(num){
+					var i=0,
+					timer=setInterval(function(){
+						if(i < num){
+							$('#n').html(i += 400);
+						}else{
+							i =num;
+							$('#n').html(i);
+							clearInterval(timer);
+						}
+					},8)
+				}
+	      </script>
+	</body>
+
+</html>
